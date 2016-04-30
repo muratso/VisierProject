@@ -26,3 +26,4 @@
   apt:
     pkg: docker-engine
     state: latest
+    force: yes
