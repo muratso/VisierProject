@@ -66,8 +66,8 @@ exports.config = {
 
     // The address of a running selenium server.
     //seleniumAddress: "http://localhost:4444/wd/hub",
-    sauceUser: 'ericferreira',
-    sauceKey: '808f5f02-86d8-481b-a5a1-ead448d8d6a7',
+    sauceUser: 'xx',
+    sauceKey: 'xxx',
 
 
     /**
