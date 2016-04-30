@@ -20,17 +20,7 @@
 
 #Add docker repository key
 - name: Add Docker repository key
-  apt_key:
-    id: "58118E89F3A912897C070ADBF76221572C52609D"
-#   keyserver: "hkp://p80.pool.sks-keyservers.net:80"
-    url: "https://apt.dockerproject.org/gpg"
-    state: present
-  register: add_repository_key
-
-- name: Alternative | Add Docker repository key
-  shell: "curl -sSL {{ apt_key_url }} | sudo apt-key add -"
-  when: add_repository_key|failed
-
+  shell: curl -fsSL https://get.docker.com/gpg | sudo apt-key add -
 #Install docker package
 - name: Install docker package
   apt:

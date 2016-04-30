@@ -23,6 +23,7 @@
     - vim
     - git
     - htop
+    - curl
 
 #Changing timezone
 - name: Set Time Zone
@@ -33,8 +34,8 @@
         mode=0644
         backup=yes
 
-- command: dpkg-reconfigure noninteractive tzdata
+- command: dpkg-reconfigure --frontend noninteractive tzdata
 
 #Changing timezone
 - command: sed -i "/# pt_BR.UTF-8 UTF-8/c\pt_BR.UTF-8 UTF-8" /etc/locale.gen
-- command: dpkg-reconfigure noninteractive locales
+- command: dpkg-reconfigure --frontend noninteractive locales
