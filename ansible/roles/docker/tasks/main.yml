@@ -1,0 +1,14 @@
+---
+# Setting up JMeter Container
+- name: JMeter Container
+  docker:
+    name: jmeter
+    image: rmrighes/jmeter
+    state: present
+
+# Setting up SonarQube Container
+- name: JMeter Container
+  docker:
+    name: sonarqube
+    image: sonarqube
+    state: present
