@@ -12,3 +12,4 @@
   roles:
     - base
     - userconfig
+    - docker

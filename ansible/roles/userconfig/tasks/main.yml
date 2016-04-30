@@ -1,17 +1,7 @@
 #Create a new user
-- name: Create user muratso
+- name: Create user visier
   user:
-    name: muratso
-    append: yes
-    groups: sudo
-    state: present
-    password: $6$vxck6f8otidD$V6rqAtVHM0gL/vY1GKAZl8Q6xbvSUQ1I0h6J5FF/6bThN4kgtZ8njuWJA3wucGUvvTz6Y1hDoPBdiQbhUkNSq.
-    shell: /bin/bash
-
-#Create a new user
-- name: Create user diogo
-  user:
-    name: diogo
+    name: visier
     append: yes
     groups: sudo
     state: present
