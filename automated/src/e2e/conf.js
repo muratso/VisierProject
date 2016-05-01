@@ -4,12 +4,6 @@
  *  We can do that when we have adaptations from the same website
  * @type {{xys: {Config: string, Environment: string}}}
  */
-var customers = {
-    'visier': {
-        Client: 'visier',
-        Config: './adaptation/visierCore/Config/config'
-    }
-};
 
 var modules = {
     'all':{
@@ -47,16 +41,11 @@ var modules = {
     }
 };
 
-var customerToTest = process.argv[3].substr(2);
-var environmentToTestv = process.argv[4].substr(2);
-var environment = modules[environmentToTestv];
-var client = customers[customerToTest];
+var environmentToTest = process.argv[3].substr(2);
+var environment = modules[environmentToTest];
 
 if(environment == null){
     console.log("Please input some module, syntax: protractor conf.js --client --module \n Existing modules: all, home, blog, solutions, industries, customerSuccess, resources, about");
-}
-if(client == null){
-    console.log("Please input some client syntax: protractor conf.js --client --module \n Existing clients: visier");
 }
 else{
     console.log("Success!!");
@@ -65,35 +54,35 @@ else{
 exports.config = {
 
     // The address of a running selenium server.
-    //seleniumAddress: "http://localhost:4444/wd/hub",
-    sauceUser: 'xx',
-    sauceKey: 'xxx',
+    seleniumAddress: "http://localhost:4444/wd/hub",
+    //sauceUser: 'xx',
+    //sauceKey: 'xxx',
 
 
     /**
-     * O selenium deverá usar o chrome em modo privativo, com todas as extensões desabilitadas,
-     * maximizado e habilitado o crash reporter.
+     * The selenium must be on privative navigation mode, all the extensions must remain disabled,
+     * it should be maximized and creash reporter should be enabled.
      */
     framework: 'jasmine',
 
     onPrepare: function(){
 
-        require('../../node_modules/protractor/node_modules/jasmine-reporters');
+        //require('../../node_modules/protractor/node_modules/jasmine-reporters');
 
-        /** Modo SauceLabs */
-        jasmine.getEnv().addReporter(new
-            jasmine.JUnitXmlReporter("/automatizado/src/e2e/report", true, true, null, true));
+        /** SauceLabs Mode */
+        //jasmine.getEnv().addReporter(new
+        //    jasmine.JUnitXmlReporter("/automated/src/e2e/report", true, true, null, true));
 
-        /** Modo Local */
+        /** Local Mode */
             //jasmine.getEnv().addReporter(new
             //jasmine.JUnitXmlReporter("./report", true, true, null, true));
 
         browser.ignoreSynchronization = true;
-        global.typeTranslate = "trans";
-        browser.driver.manage().window().maximize();
     },
 
     rootElement: 'html',
+
+
     capabilities: {
         'name' : 'Visier Rules!',
         'browserName': 'chrome',
@@ -104,9 +93,9 @@ exports.config = {
     },
 
     params: {
-        projectConfigs: Test['Config'],
+        projectConfigs: './service',
         DIContainer: function(){
-            var container = require('./Core/Config/DependencyInjector');
+            var container = require('./core/config/DependencyInjector');
             return container;
         }
     },
