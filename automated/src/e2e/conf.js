@@ -100,7 +100,7 @@ exports.config = {
         }
     },
 
-    baseUrl: 'http://www.visier.com/',
+    baseUrl: 'http://www.visier.com',
 
     // The timeout for each script run on the browser. This should be longer
     // than the maximum time you application needs to stabilize between tasks.
