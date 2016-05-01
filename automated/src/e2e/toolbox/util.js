@@ -20,6 +20,7 @@ var Util = (function() {
         });
     };
 
+    return Util;
 })();
 
 module.exports = Util;

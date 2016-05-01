@@ -8,13 +8,8 @@
 var modules = {
     'all':{
         Environment:[
-            './modules/about/about.spec.js',
             './modules/blog/blog.spec.js',
-            './modules/customerSuccess/customerSuccess.spec.js',
             './modules/home/home.spec.js',
-            './modules/industries/industries.spec.js',
-            './modules/resources/resources.spec.js',
-            './modules/solutions/solutions.spec.js'
         ]
     },
 
@@ -23,21 +18,6 @@ var modules = {
     },
     'blog':{
         Environment:"./modules/blog/blog.spec.js"
-    },
-    'solutions':{
-        Environment:"./modules/solutions/solutions.spec.js"
-    },
-    'industries':{
-        Environment:"./modules/industries/industries.spec.js"
-    },
-    'customerSuccess':{
-        Environment:"./modules/customerSuccess/customerSuccess.spec.js"
-    },
-    'resources':{
-        Environment:"./modules/resources/resources.spec.js"
-    },
-    'about':{
-        Environment:"./modules/about/about.spec.js"
     }
 };
 
@@ -63,10 +43,12 @@ exports.config = {
      * The selenium must be on privative navigation mode, all the extensions must remain disabled,
      * it should be maximized and creash reporter should be enabled.
      */
-    framework: 'jasmine',
+    framework: 'jasmine2',
 
     onPrepare: function(){
 
+        var SpecReporter = require('/usr/local/lib/node_modules/jasmine-spec-reporter/src/jasmine-spec-reporter.js');
+        jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: true}));
         //require('../../node_modules/protractor/node_modules/jasmine-reporters');
 
         /** SauceLabs Mode */
@@ -78,10 +60,18 @@ exports.config = {
             //jasmine.JUnitXmlReporter("./report", true, true, null, true));
 
         browser.ignoreSynchronization = true;
+        browser.driver.manage().window().maximize();
+        browser.get(browser.baseUrl);
+
     },
 
     rootElement: 'html',
 
+    //resultJsonOutputFile: './',
+
+    // If true, protractor will restart the browser between each test.
+    // CAUTION: This will cause your tests to slow down drastically.
+   // restartBrowserBetweenTests: true,
 
     capabilities: {
         'name' : 'Visier Rules!',
@@ -110,12 +100,10 @@ exports.config = {
     // protractor is called.
     specs: environment['Environment'],
 
-    // Options to be passed to Jasmine-node.
+    // Options to be passed to Jasmine2.
     jasmineNodeOpts: {
         showColors: true,
-        defaultTimeoutInterval: 900000,
-        includeStackTrace: true,
-        isVerbose: true,
-        silent: false
+        defaultTimeoutInterval: 300000,
+        print: function() {}
     }
 };

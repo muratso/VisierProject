@@ -5,14 +5,19 @@ module.exports = {
         return new util();
     },
 
-    basePage: function(){
-        var basePage = require('./../page/BasePage');
-        return new basePage();
-    },
-
     homePage: function(){
         var homePage = require('./../../modules/home/HomePage');
         return new homePage();
+    },
+
+    blogStep: function(){
+        var blogStep = require('./../../modules/blog/BlogStep');
+        return new blogStep();
+    },
+
+    blogPage: function(){
+        var blogPage = require('./../../modules/blog/BlogPage');
+        return new blogPage();
     }
 
 };
